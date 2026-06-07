@@ -42,30 +42,49 @@ header p{
 margin-top:10px;
 }
 
-/* --- Notification Bar Styling --- */
-.notification-bar {
+/* --- Scrolling Notification Bar Styling --- */
+.notification-container {
 background: #ffcc00;
 color: #003b7a;
-padding: 12px 20px;
-text-align: center;
-font-weight: bold;
-font-size: 16px;
-box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 border-bottom: 2px solid #e6b800;
 display: flex;
-justify-content: center;
 align-items: center;
-gap: 10px;
+overflow: hidden;
+position: relative;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-.notification-bar span {
+.notification-label {
 background: #d93838;
 color: white;
-padding: 3px 8px;
-border-radius: 4px;
-font-size: 12px;
+padding: 12px 15px;
+font-weight: bold;
+font-size: 14px;
 text-transform: uppercase;
 letter-spacing: 1px;
+z-index: 10;
+box-shadow: 3px 0 5px rgba(0,0,0,0.2);
+white-space: nowrap;
+}
+
+.notification-marquee {
+white-space: nowrap;
+display: inline-block;
+padding-left: 100%;
+animation: marquee 15s linear infinite;
+font-weight: bold;
+font-size: 16px;
+padding-top: 12px;
+padding-bottom: 12px;
+}
+
+@keyframes marquee {
+0% { transform: translate3d(0, 0, 0); }
+100% { transform: translate3d(-100%, 0, 0); }
+}
+
+.notification-container:hover .notification-marquee {
+animation-play-state: paused;
 }
 
 section{
@@ -104,12 +123,107 @@ margin-bottom:10px;
 color:#003b7a;
 }
 
+/* --- Image Slider (Carousel) Styling --- */
+.slider-container {
+max-width: 650px;
+position: relative;
+margin: auto;
+overflow: hidden;
+border-radius: 15px;
+box-shadow: 0 6px 16px rgba(0,0,0,.15);
+border: 4px solid white;
+}
+
+.mySlides {
+display: none;
+}
+
+.mySlides img {
+width: 100%;
+height: 380px;
+object-fit: cover;
+display: block;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+margin-top: -22px;
+color: white;
+font-weight: bold;
+font-size: 18px;
+transition: 0.6s ease;
+border-radius: 0 3px 3px 0;
+user-select: none;
+background-color: rgba(0,0,0,0.4);
+}
+
+.next {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+.prev:hover, .next:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+/* Dot indicators */
+.dot-container {
+text-align: center;
+padding: 10px;
+}
+
+.dot {
+cursor: pointer;
+height: 12px;
+width: 12px;
+margin: 0 4px;
+background-color: #bbb;
+border-radius: 50%;
+display: inline-block;
+transition: background-color 0.6s ease;
+}
+
+.dot.active, .dot:hover {
+background-color: #003b7a;
+}
+
+/* Fading animation */
+.fade {
+animation-name: fade;
+animation-duration: 1.5s;
+}
+
+@keyframes fade {
+from {opacity: .4} 
+to {opacity: 1}
+}
+
 .form-box{
 background:white;
 padding:25px;
 border-radius:15px;
 box-shadow:0 4px 12px rgba(0,0,0,.1);
 margin-bottom: 20px;
+position: relative;
+}
+
+/* --- Thanks Message Box Styling --- */
+.thanks-box {
+background: #e6f9ed;
+border: 2px solid #25D366;
+padding: 15px;
+border-radius: 10px;
+color: #0e622b;
+text-align: center;
+font-weight: bold;
+margin-bottom: 25px;
+font-size: 15px;
+line-height: 1.5;
 }
 
 input,select,textarea{
@@ -266,7 +380,7 @@ color: #003b7a;
 
 .faq-item.active .faq-answer {
 padding: 18px 20px;
-max-height: 500px;
+max-height: 300px;
 border-top: 1px solid #edf2f7;
 }
 
@@ -297,6 +411,27 @@ padding:20px;
 margin-top:30px;
 }
 </style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+  
+  faqQuestions.forEach(question => {
+    question.addEventListener('click', () => {
+      const item = question.parentElement;
+      
+      document.querySelectorAll('.faq-item').forEach(i => {
+        if (i !== item) {
+          i.classList.remove('active');
+        }
+      });
+      
+      item.classList.toggle('active');
+    });
+  });
+});
+</script>
+
 </head>
 
 <body>
@@ -308,8 +443,11 @@ margin-top:30px;
 <p>Near Rice Godown, Kiltan Island, Lakshadweep</p>
 </header>
 
-<div class="notification-bar">
-<span>NEW</span> 📢 Entry Permit, PAN Card & Online applications ippo fast aayi cheythu nalkunnu!
+<div class="notification-container">
+  <div class="notification-label">NEW</div>
+  <div class="notification-marquee">
+    📢 Entry Permit, PAN Card & Online applications ippo fast aayi cheythu nalkunnu! &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 📢 DTP Services, Sticker Printing & Custom Poster Designing works ippo ലഭ്യമാണ്!
+  </div>
 </div>
 
 <section>
@@ -379,6 +517,11 @@ margin-top:30px;
 <h2>Upload Documents</h2>
 
 <div class="form-box">
+  
+  <div class="thanks-box">
+    ✅ Document Upload ചെയ്ത ശേഷം താഴെയുള്ള Payment സെക്ഷൻ വഴി UPI പേയ്‌മെന്റ് ചെയ്ത് സ്ക്രീൻഷോട്ട് വാട്സാപ്പിൽ അയക്കാൻ മറക്കല്ലേ! താങ്ക്യൂ! 👍
+  </div>
+
 <iframe
 src="https://docs.google.com/forms/d/e/1FAIpQLSemIxm3ZObbRAtp1Fj-ecr7aSw72ZRXtSH0fyIOv8AJpOSIuQ/viewform?embedded=true"
 width="100%"
@@ -413,11 +556,36 @@ Loading...
 </section>
 
 <section style="text-align:center;">
+  <h2>📸 Our Shop Gallery</h2>
+  
+  <div class="slider-container">
+    <div class="mySlides fade">
+      <img src="shop1.jpg" alt="Shop Image 1">
+    </div>
+    <div class="mySlides fade">
+      <img src="shop2.jpg" alt="Shop Image 2">
+    </div>
+    <div class="mySlides fade">
+      <img src="shop3.jpg" alt="Shop Image 3">
+    </div>
+
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  
+  <div class="dot-container">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+  </div>
+</section>
+
+<section style="text-align:center;">
   <h2>⭐ Customer Reviews</h2>
   
   <div class="reviews-grid">
     <div class="review-card">
-      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <div class="stars">⭐⭐⭐⭐微</div>
       <p class="review-text">"Very fast service and friendly behavior. Highly recommended for online applications!"</p>
       <p class="customer-name">- Ahmed K.</p>
     </div>
@@ -561,4 +729,82 @@ function updateShopStatus() {
 
   let nextOpen = null;
 
-  for (let slot of slots
+  for (let slot of slots) {
+    if (current < slot.open) {
+      nextOpen = slot.open;
+      break;
+    }
+  }
+
+  if (nextOpen === null) {
+    nextOpen = slots[0].open;
+    status.innerHTML =
+      "🔴 Currently Closed<br><small style='font-size:14px; color:#555;'>Opens tomorrow at " +
+      formatTime(nextOpen) +
+      "</small>";
+  } else {
+    status.innerHTML =
+      "🔴 Currently Closed<br><small style='font-size:14px; color:#555;'>Opens at " +
+      formatTime(nextOpen) +
+      "</small>";
+  }
+
+  status.style.color = "red";
+}
+
+updateShopStatus();
+</script>
+
+<script>
+let slideIndex = 0;
+let slideTimeout;
+showSlides();
+
+function plusSlides(n) {
+  clearTimeout(slideTimeout);
+  showSlidesManual(slideIndex += n);
+}
+
+function currentSlide(n) {
+  clearTimeout(slideTimeout);
+  showSlidesManual(slideIndex = n - 1);
+}
+
+function showSlidesManual(n) {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  if (n >= slides.length) {slideIndex = 0}    
+  if (n < 0) {slideIndex = slides.length - 1}
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex].style.display = "block";  
+  dots[slideIndex].className += " active";
+  // Resume auto sliding after 5 seconds
+  slideTimeout = setTimeout(showSlides, 5000);
+}
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  let dots = document.getElementsByClassName("dot");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  for (i = 0; i < dots.length; i++) {
+    dots[i].className = dots[i].className.replace(" active", "");
+  }
+  slides[slideIndex-1].style.display = "block";  
+  dots[slideIndex-1].className += " active";
+  slideTimeout = setTimeout(showSlides, 4000); // Change image every 4 seconds
+}
+</script>
+
+</body>
+</html>
