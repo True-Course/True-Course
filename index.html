@@ -614,7 +614,7 @@ function updateShopStatus() {
   for (let slot of slots) {
     if (current >= slot.open && current < slot.close) {
       status.innerHTML =
-        "🟢 Currently Open<br><small style='font-size:14px; color:#555;'>Closes at " +
+        "🟢 Currently Open<br><small style='font-size:14px; color:#555;'>Close at " +
         formatTime(slot.close) +
         "</small>";
       status.style.color = "green";
