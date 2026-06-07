@@ -183,4 +183,382 @@ font-size: 18px;
 margin-bottom: 8px;
 }
 
-.review
+.review-text {
+font-style: italic;
+color: #444;
+margin-bottom: 10px;
+font-size: 15px;
+}
+
+.customer-name {
+font-weight: bold;
+color: #003b7a;
+font-size: 14px;
+text-align: right;
+}
+
+.review-btn {
+display: inline-block;
+background: #003b7a;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+text-decoration: none;
+font-size: 15px;
+font-weight: bold;
+transition: background 0.3s;
+}
+
+.review-btn:hover {
+background: #0054ad;
+}
+
+/* --- FAQ Accordion Styling --- */
+.faq-container {
+max-width: 800px;
+margin: auto;
+text-align: left;
+}
+
+.faq-item {
+background: white;
+margin-bottom: 15px;
+border-radius: 10px;
+box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+overflow: hidden;
+border: 1px solid #e2e8f0;
+}
+
+.faq-question {
+padding: 18px 20px;
+font-weight: bold;
+color: #003b7a;
+cursor: pointer;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 16px;
+user-select: none;
+background: #fff;
+transition: background 0.2s;
+}
+
+.faq-question:hover {
+background: #fcfdfe;
+}
+
+.faq-answer {
+padding: 0 20px;
+max-height: 0;
+overflow: hidden;
+transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+color: #444;
+line-height: 1.6;
+font-size: 15px;
+background: #fafcfe;
+}
+
+.faq-toggle {
+font-size: 14px;
+transition: transform 0.3s;
+color: #003b7a;
+}
+
+.faq-item.active .faq-answer {
+padding: 18px 20px;
+max-height: 500px;
+border-top: 1px solid #edf2f7;
+}
+
+.faq-item.active .faq-toggle {
+transform: rotate(180deg);
+}
+
+.lang-split {
+margin-top: 8px;
+padding-top: 8px;
+border-top: 1px dashed #e2e8f0;
+}
+
+.lang-tag {
+font-size: 11px;
+font-weight: bold;
+color: #00a2ff;
+text-transform: uppercase;
+display: block;
+margin-bottom: 2px;
+}
+
+footer{
+background:#003b7a;
+color:white;
+text-align:center;
+padding:20px;
+margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<img src="logo.jpg.jpeg" alt="True Course Logo">
+<h1>TRUE COURSE</h1>
+<p>Internet Cafe & Online Services</p>
+<p>Near Rice Godown, Kiltan Island, Lakshadweep</p>
+</header>
+
+<div class="notification-bar">
+<span>NEW</span> 📢 Entry Permit, PAN Card & Online applications ippo fast aayi cheythu nalkunnu!
+</div>
+
+<section>
+<h2>Our Services</h2>
+
+<div class="services">
+
+<div class="card">
+<h3>📄 Printing</h3>
+<p>Black & White and Color Printing</p>
+</div>
+
+<div class="card">
+<h3>📑 Lamination</h3>
+<p>All document lamination services</p>
+</div>
+
+<div class="card">
+<h3>🖼️ Framing</h3>
+<p>Photo and certificate framing</p>
+</div>
+
+<div class="card">
+<h3>🌐 Online Applications</h3>
+<p>Government and private online services</p>
+</div>
+
+<div class="card">
+<h3>📸 Passport Size Photo</h3>
+<p>Instant passport photo service</p>
+</div>
+
+<div class="card">
+<h3>🗺️ Entry Permit</h3>
+<p>Lakshadweep Entry Permit online applications & processing</p>
+</div>
+
+<div class="card">
+<h3>💳 PAN Card</h3>
+<p>New PAN Card registration and correction services</p>
+</div>
+
+<div class="card">
+<h3>🏷️ Sticker Printing</h3>
+<p>High-quality custom sticker design & printing</p>
+</div>
+
+<div class="card">
+<h3>🖨️ Photocopy</h3>
+<p>Fast Black & White and Color photocopy service</p>
+</div>
+
+<div class="card">
+<h3>⌨️ DTP Services</h3>
+<p>DTP typing in Malayalam, English, and Hindi languages</p>
+</div>
+
+<div class="card">
+<h3>🎨 Poster Making & Designing</h3>
+<p>Custom poster making, social media posts & creative designing</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Upload Documents</h2>
+
+<div class="form-box">
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLSemIxm3ZObbRAtp1Fj-ecr7aSw72ZRXtSH0fyIOv8AJpOSIuQ/viewform?embedded=true"
+width="100%"
+height="1200"
+frameborder="0"
+marginheight="0"
+marginwidth="0">
+Loading...
+</iframe>
+</div>
+</section>
+
+<section>
+<h2>Payment</h2>
+
+<div class="form-box">
+<p><b>UPI ID:</b> sharfeedsm-1@okhdfcbank</p>
+<br>
+<p>Pay and send screenshot through WhatsApp.</p>
+</div>
+</section>
+
+<section style="text-align:center; padding:20px;">
+  <h2>🕒 Business Hours</h2>
+  <div class="form-box hours-box">
+    <p><b>Every Day</b></p>
+    <p>9:30 AM - 1:30 PM</p>
+    <p>2:30 PM - 6:00 PM</p>
+    <p>7:30 PM - 11:00 PM</p>
+    <h3 id="shop-status"></h3>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <h2>⭐ Customer Reviews</h2>
+  
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Very fast service and friendly behavior. Highly recommended for online applications!"</p>
+      <p class="customer-name">- Ahmed K.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Document printing and photo framing work super clean aayt cheyth thandund. Thanks!"</p>
+      <p class="customer-name">- Sayed M.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Kiltan-il ippo online services-inu ashrayikkaan pattiya ettavum nalla spot."</p>
+      <p class="customer-name">- Fatima R.</p>
+    </div>
+  </div>
+
+  <a class="review-btn" href="https://wa.me/919496461095?text=Hi,%20I%20want%20to%20leave%20a%20review%20for%20True%20Course!" target="_blank">
+    ✍️ Write a Review
+  </a>
+</section>
+
+<section style="padding:40px 20px;">
+  <h2>❓ Frequently Asked Questions</h2>
+  
+  <div class="faq-container">
+    
+    <div class="faq-item">
+      <div class="faq-question">
+        Can I send files online for DTP or printing? / Njan online aayi ayച്ചാൽ DTP/Print cheythu tharu mo?
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <span class="lang-tag">English</span>
+        Yes, you can upload your files through the "Upload Documents" form above or send details via WhatsApp. We will complete the work and keep it ready for you.
+        <div class="lang-split">
+          <span class="lang-tag">Malayalam</span>
+          Athe, mukalil ulla "Upload Documents" form vazhiyo athava WhatsApp vazhiyo details ayക്കാം. Njangal work complete cheythu ready aaki vekkunnathanu.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Do you type in multiple languages? / Ethellam bhashayil DTP cheythu nalkum?
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <span class="lang-tag">English</span>
+        Yes, we provide full DTP services in English, Malayalam, and Hindi languages with accurate formatting.
+        <div class="lang-split">
+          <span class="lang-tag">Malayalam</span>
+          English, Malayalam, Hindi thudangiya bhashakalil nalla vrithiyil formatting-od koodi DTP cheythu nalkunnund.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        Can you design custom posters? / Posters & Banners design cheythu tharumo?
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <span class="lang-tag">English</span>
+        Yes, we design beautiful custom posters for events, social media, advertisements, and school/college projects according to your requirements.
+        <div class="lang-split">
+          <span class="lang-tag">Malayalam</span>
+          Athe, social media aavashyangalkkum, prashangangalkkum, programs-num vendi ulla custom poster designing njangal cheythu tharunnund.
+        </div>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-question">
+        How can I make the payment? / Payment engane cheyyaam?
+        <span class="faq-toggle">▼</span>
+      </div>
+      <div class="faq-answer">
+        <span class="lang-tag">English</span>
+        You can easily pay via UPI using our UPI ID provided in the payment section and send the payment screenshot to our WhatsApp. Cash payment is also accepted at the shop.
+        <div class="lang-split">
+          <span class="lang-tag">Malayalam</span>
+          Website-ile payment section-il ulla UPI ID upayogichu online aayi pay cheyyaam, shesham screenshot WhatsApp-il ayachaal mathi. Shop-il direct cash aayittum nalkaam.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="contact">
+<h2>Contact Us</h2>
+
+<p>📞 9496461095</p>
+<p>📍 Near Rice Godown, Kiltan Island, Lakshadweep</p>
+
+<a class="whatsapp"
+href="https://wa.me/919496461095"
+target="_blank">
+Chat on WhatsApp
+</a>
+
+</section>
+
+<footer>
+© 2026 True Course. All Rights Reserved.
+</footer>
+
+<script>
+function updateShopStatus() {
+  const now = new Date();
+  const current = now.getHours() * 60 + now.getMinutes();
+
+  const slots = [
+    { open: 570, close: 810 },   // 9:30 AM - 1:30 PM
+    { open: 870, close: 1080 },  // 2:30 PM - 6:00 PM
+    { open: 1170, close: 1380 }  // 7:30 PM - 11:00 PM
+  ];
+
+  const status = document.getElementById("shop-status");
+
+  function formatTime(minutes) {
+    let h = Math.floor(minutes / 60);
+    let m = minutes % 60;
+    let ampm = h >= 12 ? "PM" : "AM";
+    h = h % 12;
+    if (h === 0) h = 12;
+    return h + ":" + String(m).padStart(2, "0") + " " + ampm;
+  }
+
+  for (let slot of slots) {
+    if (current >= slot.open && current < slot.close) {
+      status.innerHTML =
+        "🟢 Currently Open<br><small style='font-size:14px; color:#555;'>Closes at " +
+        formatTime(slot.close) +
+        "</small>";
+      status.style.color = "green";
+      return;
+    }
+  }
+
+  let nextOpen = null;
+
+  for (let slot of slots
