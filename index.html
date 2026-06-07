@@ -42,6 +42,32 @@ header p{
 margin-top:10px;
 }
 
+/* --- Notification Bar Styling --- */
+.notification-bar {
+background: #ffcc00;
+color: #003b7a;
+padding: 12px 20px;
+text-align: center;
+font-weight: bold;
+font-size: 16px;
+box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+border-bottom: 2px solid #e6b800;
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 10px;
+}
+
+.notification-bar span {
+background: #d93838;
+color: white;
+padding: 3px 8px;
+border-radius: 4px;
+font-size: 12px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
 section{
 padding:40px 20px;
 max-width:1100px;
@@ -116,6 +142,71 @@ border-radius:8px;
 text-decoration:none;
 }
 
+/* --- Business Hours Box Styling --- */
+.hours-box {
+line-height: 1.8;
+font-size: 16px;
+}
+
+#shop-status {
+margin-top: 15px;
+font-size: 22px;
+font-weight: bold;
+}
+
+/* --- Customer Reviews Styling --- */
+.reviews-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 20px;
+margin-bottom: 25px;
+}
+
+.review-card {
+background: white;
+padding: 20px;
+border-radius: 12px;
+box-shadow: 0 4px 10px rgba(0,0,0,.05);
+border-left: 5px solid #003b7a;
+text-align: left;
+}
+
+.stars {
+color: #ffcc00;
+font-size: 18px;
+margin-bottom: 8px;
+}
+
+.review-text {
+font-style: italic;
+color: #444;
+margin-bottom: 10px;
+font-size: 15px;
+}
+
+.customer-name {
+font-weight: bold;
+color: #003b7a;
+font-size: 14px;
+text-align: right;
+}
+
+.review-btn {
+display: inline-block;
+background: #003b7a;
+color: white;
+padding: 10px 20px;
+border-radius: 8px;
+text-decoration: none;
+font-size: 15px;
+font-weight: bold;
+transition: background 0.3s;
+}
+
+.review-btn:hover {
+background: #0054ad;
+}
+
 footer{
 background:#003b7a;
 color:white;
@@ -134,6 +225,10 @@ margin-top:30px;
 <p>Internet Cafe & Online Services</p>
 <p>Near Rice Godown, Kiltan Island, Lakshadweep</p>
 </header>
+
+<div class="notification-bar">
+<span>NEW</span> 📢 Ningalude arivippukal/content ivide ezhuthuka (Eg: PSC Registration Last Date: June 15)
+</div>
 
 <section>
 <h2>Our Services</h2>
@@ -194,6 +289,45 @@ Loading...
 </div>
 </section>
 
+<section style="text-align:center; padding:20px;">
+  <h2>🕒 Business Hours</h2>
+  <div class="form-box hours-box">
+    <p><b>Every Day</b></p>
+    <p>9:30 AM - 1:30 PM</p>
+    <p>2:30 PM - 6:00 PM</p>
+    <p>7:30 PM - 11:00 PM</p>
+    <h3 id="shop-status"></h3>
+  </div>
+</section>
+
+<section style="text-align:center;">
+  <h2>⭐ Customer Reviews</h2>
+  
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Very fast service and friendly behavior. Highly recommended for online applications!"</p>
+      <p class="customer-name">- Ahmed K.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Document printing and photo framing work super clean aayt cheyth thandund. Thanks!"</p>
+      <p class="customer-name">- Sayed M.</p>
+    </div>
+
+    <div class="review-card">
+      <div class="stars">⭐⭐⭐⭐⭐</div>
+      <p class="review-text">"Kiltan-il ippo online services-inu ashrayikkaan pattiya ettavum nalla spot."</p>
+      <p class="customer-name">- Fatima R.</p>
+    </div>
+  </div>
+
+  <a class="review-btn" href="https://wa.me/919496461095?text=Hi,%20I%20want%20to%20leave%20a%20review%20for%20True%20Course!" target="_blank">
+    ✍️ Write a Review
+  </a>
+</section>
+
 <section class="contact">
 <h2>Contact Us</h2>
 
@@ -212,5 +346,27 @@ Chat on WhatsApp
 © 2026 True Course. All Rights Reserved.
 </footer>
 
-</body>
-</html>
+<script>
+function updateShopStatus() {
+  const now = new Date();
+  const current = now.getHours() * 60 + now.getMinutes();
+
+  const slots = [
+    { open: 570, close: 810 },   // 9:30 AM - 1:30 PM
+    { open: 870, close: 1080 },  // 2:30 PM - 6:00 PM
+    { open: 1170, close: 1380 }  // 7:30 PM - 11:00 PM
+  ];
+
+  const status = document.getElementById("shop-status");
+
+  function formatTime(minutes) {
+    let h = Math.floor(minutes / 60);
+    let m = minutes % 60;
+    let ampm = h >= 12 ? "PM" : "AM";
+    h = h % 12;
+    if (h === 0) h = 12;
+    return h + ":" + String(m).padStart(2, "0") + " " + ampm;
+  }
+
+  for (let slot of slots) {
+    if (current >= slot.open && current
